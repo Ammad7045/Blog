@@ -1,0 +1,15 @@
+
+{
+  "posts": [
+    {
+      "title": "My First Blog Post",
+      "date": "2025-05-13",
+      "content": "This is my first blog post. I'm excited to start this journey!"
+    },
+    {
+      "title": "Why I Love Coding",
+      "date": "2025-05-14",
+      "content": "Coding allows me to bring ideas to life. Here's why I enjoy it..."
+    }
+  ]
+}
