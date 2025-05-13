@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ammad's Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Ammad's Blog</a>
+  </div>
+</nav>
+
+<header class="bg-light p-5 text-center">
+  <h1>Welcome to My Blog</h1>
+  <p class="lead">Coding | Life | Tech</p>
+</header>
+
+<div class="container my-5">
+  <h2 class="mb-4">Latest Posts</h2>
+  <div id="post-list"></div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+  <small>&copy; 2025 Ammad's Blog</small>
+</footer>
+
+<script>
+  fetch('posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      const custom = JSON.parse(localStorage.getItem('customPosts')) || [];
+      return posts.concat(custom);
+    })
+    .then(posts => {
+      const postList = document.getElementById('post-list');
+      posts.forEach(post => {
+        postList.innerHTML += `
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title">${post.title}</h3>
+              <p class="card-text"><small class="text-muted">${post.date}</small></p>
+              <a href="${post.link}" class="btn btn-primary">Read more</a>
+            </div>
+          </div>`;
+      });
+    })
+    .catch(error => {
+      document.getElementById('post-list').innerHTML = '<p>Error loading posts.</p>';
+    });
+    .then(res => res.json())
+    .then(posts => {
+      const postList = document.getElementById('post-list');
+      posts.forEach(post => {
+        postList.innerHTML += `
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title">${post.title}</h3>
+              <p class="card-text"><small class="text-muted">${post.date}</small></p>
+              <a href="${post.link}" class="btn btn-primary">Read more</a>
+            </div>
+          </div>`;
+      });
+    })
+    .catch(error => {
+      document.getElementById('post-list').innerHTML = '<p>Error loading posts.</p>';
+    });
+</script>
+
+</body>
+</html>
